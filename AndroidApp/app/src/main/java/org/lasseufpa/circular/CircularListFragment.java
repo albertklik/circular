@@ -23,7 +23,7 @@ public class CircularListFragment extends Fragment
     private EmptyCircularListReciclerViewAdapter emptyRecyclerViewAdapter;
     private CircularListRecyclerViewAdapter recyclerViewAdapter;
     private OnCircularListFragmentInteractionListener mListener;
-    private RepositorioCircular repositorio = CircularMapFragment.repositorioCirculares;
+    private RepositorioCircular repositorio = MainActivity.repositorioCirculares;
     private RecyclerView recyclerView;
     private FragmentActivity activity;
 

@@ -37,7 +37,10 @@ public class MainActivity
     String[] titles = {"Mapa","Frota Ativa","Paradas","Configurações"};
     private MainPagerAdapter mainPagerAdapter;
 
+    //repositorio de paradas
     public static final RepositorioParadas repositorioParadas = new RepositorioParadas();
+    //repositório de circulares
+    public static final RepositorioCircular repositorioCirculares = new RepositorioCircular();
 
 
     @Override

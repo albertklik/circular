@@ -35,7 +35,7 @@ public class CircularUpdateService extends Service implements Runnable,MqttCallb
     private boolean serviceOn = false;
 
     //recuperando instancia do repositorio
-    private RepositorioCircular repositorio = CircularMapFragment.repositorioCirculares;
+    private RepositorioCircular repositorio = MainActivity.repositorioCirculares;
 
     //objeto de conexão MQTT
     private  MQTTconect mqttconnect;

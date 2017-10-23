@@ -1,18 +1,23 @@
 package org.lasseufpa.circular.Domain;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by alberto on 03/04/2017.
  */
 
 public class Parada {
 
-    private double x;
-    private double y;
+    private LatLng location;
 
     private String title;
     private String description;
     private final int nParada;
     private boolean IsCircularHere;
+
+    public LatLng getLocation() { return location;    }
+
+    public void setLocation(LatLng location) {  this.location = location;    }
 
     public Parada (int nParada) {
         this.nParada = nParada;
@@ -28,22 +33,6 @@ public class Parada {
 
     public int getnParada() {
         return nParada;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     public String getTitle() {

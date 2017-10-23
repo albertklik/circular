@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.lasseufpa.circular.Domain.Parada;
 import org.lasseufpa.circular.Domain.ParadasList;
 
@@ -33,8 +35,7 @@ public class RepositorioParadas {
                 currentP.setDescription(p.getDescription());
                 currentP.setCircularHere(p.isCircularHere());
                 currentP.setTitle(p.getTitle());
-                currentP.setX(p.getX());
-                currentP.setY(p.getY());
+                currentP.setLocation(p.getLocation());
                 return;
             }
 
@@ -92,8 +93,8 @@ public class RepositorioParadas {
                 currentP = new Parada(i);
                 currentP.setTitle(ParadasList.NAME_DESCRIPTION[i][0]);
                 currentP.setDescription(ParadasList.NAME_DESCRIPTION[i][1]);
-                currentP.setX(ParadasList.POINTS[i][0]);
-                currentP.setY(ParadasList.POINTS[i][1]);
+                currentP.setLocation(new LatLng(ParadasList.POINTS[i][0],ParadasList.POINTS[i][1]));
+
                 currentP.setCircularHere(false);
                 paradas.add(i,currentP);
                 Log.i("log","adicionado" + currentP.getDescription());

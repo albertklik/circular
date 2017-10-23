@@ -10,9 +10,9 @@ public abstract class ParadasList {
     public static final int N_STOP_POINTS = 28;
     public static final double[][] POINTS = {
 
-        { -1.464255,  -48.444712}, //0- Espaco Inovacao
-        { -1.469727,  -48.446557}, //1- Betina
-        { -1.472745,  -48.451378}, //2- Portao 3
+        {  -1.47281, -48.45858}, //0- Transporte
+        { -1.475309,  -48.458384}, //1- Segurança
+        { -1.475053,  -48.458483}, //2- RU
         { -1.472965,  -48.451668}, //3- Portao 3
         { -1.476600,  -48.454826}, //4- Vadiao
         { -1.474466,  -48.455782}, //5- ICEN
@@ -44,8 +44,8 @@ public abstract class ParadasList {
 
     public static final String[][] NAME_DESCRIPTION = {
 
-    {"#1-Espaço Inovação"          , "Espaço inovação, PCT-Guamá"                   },        //0
-    {"#2-Hospital Betina Ferro"    , "Hospital Universitário Betina ferro de Souza" },        //1
+    {"#1-Transporte"          , "Departamento de transporte da UFPA"                },        //0
+    {"#2-Segurança"    , "Segurança Universidade Federal do Pará" },        //1
     {"#3-Portão 3 (Lado Portaria)"      , "Portão 3 Da UFPA, Terminal Rodoviário"   },        //2
     {"#4-Portão 3 (Lado Estacionamento)", "Portão 3 Da UFPA, ARodoviário"           },        //3
     {"#5-Vadião", "Espaço de Recreação, Bancos, Lojas e Serviços"                   },        //4
