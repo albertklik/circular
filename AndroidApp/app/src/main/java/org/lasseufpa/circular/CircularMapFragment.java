@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -34,7 +36,7 @@ import java.util.ArrayList;
 
 public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         RepositorioCircular.RepositorioCircularChangeListener,
-        RepositorioParadas.OnRepositorioParadasChangeListener {
+        RepositorioParadas.OnRepositorioParadasChangeListener, RepositorioRotas.OnRepositorioRotasChangeListener {
 
     //TASKS
     // - atualizar pontos de parada
@@ -53,6 +55,9 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
     //repositorio paradas
     private RepositorioParadas repositorioParadas = MainActivity.repositorioParadas;
 
+    //repositoriorotas
+    private RepositorioRotas repositorioRotas = MainActivity.repositorioRotas;
+
     //lista de circulares
     private ArrayList<Circular> circulares;
 
@@ -66,12 +71,12 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
     ArrayList<Marker> paradasMarkers;
 
     //rota do circular
-    Polyline rotacircular01;
+    Polyline rotacircularIda;
+    Polyline rotacircularVolta;
 
     //contexto
     Context contexto;
-
-
+    private boolean saved;
 
 
     @Override
@@ -89,6 +94,13 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         circularesMarkers = new ArrayList<>();
         paradasMarkers = new ArrayList<>();
 
+        if (savedInstanceState!=null) {
+            saved = savedInstanceState.getBoolean("saved");
+        }
+
+
+
+
     }
 
     @Override
@@ -96,6 +108,8 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         super.onStart();
         repositorioCirculares.setRepositorioCircularChangeListener(this);
         repositorioParadas.setOnRepositorioParadasChangeListener(this);
+        repositorioRotas.setOnRepositorioParadasChangeListener(this);
+
     }
 
     @Override
@@ -166,8 +180,20 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
 
     }
 
+    private void cleanParadaMarkers() {
+
+        //retirar todos os marcadores circular do mapa
+        for (Marker m : paradasMarkers) {
+            m.remove();
+        }
+        paradasMarkers.clear();
+        //limpar lista de marcadores circulares
+    }
+
     public void setupRouteCircular () {
-        new SetupRoute().execute();
+        new SetupRouteVolta().execute();
+        new SetupRouteIda().execute();
+
     }
 
 
@@ -177,6 +203,7 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         super.onStop();
         repositorioCirculares.removeRepositorioCircularChangeListener(this);
         repositorioParadas.removeOnRepositorioParadasChangeListener(this);
+        repositorioRotas.removeOnRepositorioParadasChangeListener(this);
         map.onStop();
         cleanCircularMarkers();
         Log.i("circularMapFragment","Onstop chamado");
@@ -188,13 +215,22 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+
+
         mMap = googleMap;
-        LatLng place = new LatLng(-1.472465599146933,-48.45721595321921);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
-        // Zoom in, animating the camera.
-        mMap.animateCamera(CameraUpdateFactory.zoomIn());
-        // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 1000, null);
+
+
+        if (saved) {
+
+        } else {
+            LatLng place = new LatLng(-1.472465599146933,-48.45721595321921);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
+            // Zoom in, animating the camera.
+            mMap.animateCamera(CameraUpdateFactory.zoomIn());
+            // Zoom out to zoom level 10, animating with a duration of 2 seconds.
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 1000, null);
+        }
+
 
 
         //salvar estado do mapa
@@ -243,7 +279,7 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
                     m.setPosition(currentC.getPosition());
                     //verifica se ele não esta antigo
                     if (currentC.isObsolet()) {
-                        m.setIcon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("circg", 100, 100)));
+                        m.setIcon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("circpind", 100, 100)));
                     }
                     found = true;
                     break;
@@ -316,8 +352,9 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
     Marker circular = mMap.addMarker(new MarkerOptions()
                     .position(C.getPosition())
                     .title(C.getNome())
-                    .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("circ", 100, 100)))
+                    .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("circpin", 100, 100)))
             );
+
      circularesMarkers.add(circulares.indexOf(C),circular);
 
     }
@@ -376,6 +413,20 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         });
     }
 
+    @Override
+    public void OnRepositorioRotasChanged() {
+        if (repositorioRotas.isrota1Ativa()) {
+            rotacircularIda.setVisible(true);
+        } else {
+            rotacircularIda.setVisible(false);
+        }
+
+        if (repositorioRotas.isrota2Ativa()) {
+            rotacircularVolta.setVisible(true);
+        } else {
+            rotacircularVolta.setVisible(false);
+        }
+    }
 
 
     private class UpdateParadas extends AsyncTask<Void,MarkerOptions,Void> {
@@ -385,16 +436,20 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         protected Void doInBackground(Void... voids) {
 
 
-            MarkerOptions markerOption;
-            BitmapDescriptor icone = BitmapDescriptorFactory.fromBitmap(resizeMapIcons("stoppoint", 50, 50));
-            for (Parada p : paradas) {
-            markerOption = (new MarkerOptions()
-                    .position(p.getLocation())
-                    .title(p.getTitle())
-                    .icon(icone))
-                    .snippet(p.getDescription());
+            if (repositorioParadas.isActive()) {
+                MarkerOptions markerOption;
+                BitmapDescriptor icone = BitmapDescriptorFactory.fromBitmap(resizeMapIcons("stoppin", 70, 70));
+                for (Parada p : paradas) {
+                    markerOption = (new MarkerOptions()
+                            .position(p.getLocation())
+                            .title(p.getTitle())
+                            .icon(icone))
+                            .snippet(p.getDescription());
 
-                publishProgress(markerOption);
+                    publishProgress(markerOption);
+                }
+            } else {
+                cleanParadaMarkers();
             }
 
             return null;
@@ -404,13 +459,13 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         @Override
         protected void onProgressUpdate(MarkerOptions... values) {
             super.onProgressUpdate(values);
-            mMap.addMarker(values[0]);
+            paradasMarkers.add(mMap.addMarker(values[0]));
         }
     }
 
 
 
-    private class SetupRoute extends AsyncTask<Void,Void,PolylineOptions> {
+    private class SetupRouteIda extends AsyncTask<Void,Void,PolylineOptions> {
 
 
         @Override
@@ -418,10 +473,10 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
 
             ArrayList<LatLng> pontos= new ArrayList<>();
 
-            for (int i = 0; i< RouteCircular1.NROUTEPOINTS; i++) {
+            for (int i = 0; i< RouteCircular1.NROUTERETURN; i++) {
                 pontos.add(new LatLng(RouteCircular1.POINTS[i][1], RouteCircular1.POINTS[i][0]));
             }
-            pontos.add(new LatLng(RouteCircular1.POINTS[0][1], RouteCircular1.POINTS[0][0]));
+            //pontos.add(new LatLng(RouteCircular1.POINTS[0][1], RouteCircular1.POINTS[0][0]));
 
             return new PolylineOptions().addAll(pontos).width(5).color(Color.rgb(255,153,153));
         }
@@ -429,7 +484,41 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         @Override
         protected void onPostExecute(PolylineOptions rota) {
             super.onPostExecute(rota);
-            rotacircular01 = mMap.addPolyline(rota);
+            rotacircularIda = mMap.addPolyline(rota);
+        }
+
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+            map.onSaveInstanceState(outState);
+        outState.putBoolean("saved",true);
+    }
+
+    private class SetupRouteVolta extends AsyncTask<Void,Void,PolylineOptions> {
+
+
+        @Override
+        protected PolylineOptions doInBackground(Void... voids) {
+
+            ArrayList<LatLng> pontos= new ArrayList<>();
+
+            for (int i = RouteCircular1.NROUTERETURN-1; i< RouteCircular1.POINTS.length; i++) {
+                pontos.add(new LatLng(RouteCircular1.POINTS[i][1], RouteCircular1.POINTS[i][0]));
+            }
+
+            pontos.add(new LatLng(RouteCircular1.POINTS[0][1], RouteCircular1.POINTS[0][0]));
+            return new PolylineOptions().addAll(pontos).width(10).color(Color.rgb(38,121,167));
+        }
+
+        @Override
+        protected void onPostExecute(PolylineOptions rota) {
+            super.onPostExecute(rota);
+            rotacircularVolta = mMap.addPolyline(rota);
+
+
         }
 
 

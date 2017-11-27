@@ -32,9 +32,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 fragment = Fragment.instantiate(context, ParadaListFragment.class.getName());
                 break;
-            case 3:
-                fragment = Fragment.instantiate(context, FeedbackFragment.class.getName());
-                break;
+
 
         }
 
@@ -44,6 +42,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 }

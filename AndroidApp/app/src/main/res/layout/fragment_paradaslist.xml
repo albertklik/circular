@@ -9,8 +9,9 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="5dp"
-    android:focusable="false"
     android:clickable="true"
+    android:focusable="false"
+    card_view:cardBackgroundColor="@android:color/background_light"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="2dp">
 
@@ -26,21 +27,22 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            card_view:srcCompat="@drawable/stoppoint" />
+            card_view:srcCompat="@drawable/stoppin" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
 
             <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
+                android:id="@+id/tituloParada"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
+                android:layout_weight="0.96"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textColor="@android:color/black"
+                android:textColor="@color/wallet_dim_foreground_inverse_holo_dark"
                 android:textSize="18sp"
                 tools:text="titulo" />
 
@@ -48,7 +50,7 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_weight="1"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:textColor="@android:color/darker_gray"

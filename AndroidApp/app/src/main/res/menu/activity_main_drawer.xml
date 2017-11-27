@@ -10,6 +10,27 @@
         android:icon="@drawable/ic_remote"
         android:checkable="false"
         />
+        <item
+            android:id="@+id/nav_switch_stop"
+            android:title="Pontos de Parada"
+            app:actionViewClass="android.widget.Switch"
+            android:icon="@drawable/ic_flagd"
+            android:checkable="false"
+            />
+        <item
+            android:id="@+id/nav_switch_rote1"
+            android:title="Rota de Ida"
+            app:actionViewClass="android.widget.Switch"
+            android:icon="@drawable/rotaida"
+            android:checkable="false"
+            />
+        <item
+            android:id="@+id/nav_switch_rote2"
+            android:title="Rota de volta"
+            app:actionViewClass="android.widget.Switch"
+            android:icon="@drawable/rotavolta"
+            android:checkable="false"
+            />
     </group>
 
     <group android:checkableBehavior="single">

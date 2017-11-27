@@ -18,7 +18,21 @@ import java.util.ArrayList;
 public class RepositorioParadas {
 
     private ArrayList<Parada> paradas;
+    private boolean active = true;
     private ArrayList<OnRepositorioParadasChangeListener> listeners;
+
+
+    public void setParadasActive(boolean b) {
+        if (active!=b) {
+            active = b;
+            notifyChange();
+        }
+    }
+
+    public boolean isActive () {
+        return active;
+    }
+
 
     public RepositorioParadas() {
 
@@ -79,7 +93,7 @@ public class RepositorioParadas {
 
     public interface OnRepositorioParadasChangeListener {
 
-        public void OnRepositorioParadasChanged();
+         void OnRepositorioParadasChanged();
     }
 
     private class SetupParadasListTask extends AsyncTask<Void,Void,Void> {
@@ -89,7 +103,7 @@ public class RepositorioParadas {
         protected Void doInBackground(Void... voids) {
 
             Parada currentP;
-            for (int i = 0;i<ParadasList.N_STOP_POINTS;i++) {
+            for (int i = 0;i<ParadasList.POINTS.length;i++) {
                 currentP = new Parada(i);
                 currentP.setTitle(ParadasList.NAME_DESCRIPTION[i][0]);
                 currentP.setDescription(ParadasList.NAME_DESCRIPTION[i][1]);

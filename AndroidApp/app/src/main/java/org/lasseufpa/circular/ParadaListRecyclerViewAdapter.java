@@ -38,7 +38,7 @@ public class ParadaListRecyclerViewAdapter extends RecyclerView.Adapter<ParadaLi
     public void onBindViewHolder(final ParadaListRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.mItem = paradas.get(position);
         holder.mCircularName = holder.mItem.getTitle();
-        //holder.mIdView.setText(holder.mItem.getnParada());
+        holder.mIdView.setText(holder.mItem.getTitle());
         holder.mContentView.setText(holder.mItem.getDescription());
 
     }
@@ -61,7 +61,7 @@ public class ParadaListRecyclerViewAdapter extends RecyclerView.Adapter<ParadaLi
             super(view);
             mView = view;
 
-            mIdView = (TextView) view.findViewById(R.id.id);
+            mIdView = (TextView) view.findViewById(R.id.tituloParada);
             mContentView = (TextView) view.findViewById(R.id.content);
             mImageView = (ImageView) view.findViewById(R.id.circimg);
             mCardView = (CardView) view.findViewById(R.id.card_view);

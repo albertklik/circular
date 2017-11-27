@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class MainActivity
         extends
@@ -27,20 +28,22 @@ public class MainActivity
         NavigationView.OnNavigationItemSelectedListener,
         ViewPager.OnPageChangeListener,
         CircularListFragment.OnCircularListFragmentInteractionListener,
-        CompoundButton.OnCheckedChangeListener
+        Switch.OnCheckedChangeListener
 {
 
-    private int itemSelected = 0;
+
     NavigationView nav;
     ViewPager viewPager;
     Toolbar toolbar;
-    String[] titles = {"Mapa","Frota Ativa","Paradas","Configurações"};
+    String[] titles = {"Mapa","Frota Ativa","Paradas"};
     private MainPagerAdapter mainPagerAdapter;
 
     //repositorio de paradas
     public static final RepositorioParadas repositorioParadas = new RepositorioParadas();
     //repositório de circulares
     public static final RepositorioCircular repositorioCirculares = new RepositorioCircular();
+    //repositorio rotas
+    public static final RepositorioRotas repositorioRotas = new RepositorioRotas();
 
 
     @Override
@@ -59,6 +62,7 @@ public class MainActivity
 
             }
         });
+        fab.setVisibility(View.GONE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,13 +75,34 @@ public class MainActivity
         nav.setCheckedItem(R.id.nav_map);
 
         MenuItem switchItem = nav.getMenu().findItem(R.id.nav_switch);
-        CompoundButton switchView = (CompoundButton) MenuItemCompat.getActionView(switchItem);
-        switchView.setOnCheckedChangeListener(this);
+        Switch switchView1 = (Switch) MenuItemCompat.getActionView(switchItem);
+        switchView1.setChecked(true);
+        startCircularService();
+        switchView1.setOnCheckedChangeListener(this);
+
+        MenuItem paradaSwitch = nav.getMenu().findItem(R.id.nav_switch_stop);
+        Switch switchViewparada = (Switch) MenuItemCompat.getActionView(paradaSwitch);
+        switchViewparada.setChecked(true);
+        switchViewparada.setOnCheckedChangeListener(this);
+
+        MenuItem rota1Switch = nav.getMenu().findItem(R.id.nav_switch_rote1);
+        Switch switchViewrota1 = (Switch) MenuItemCompat.getActionView(rota1Switch);
+        switchViewrota1.setChecked(true);
+        switchViewrota1.setOnCheckedChangeListener(this);
+
+        MenuItem rota2switch = nav.getMenu().findItem(R.id.nav_switch_rote2);
+        Switch switchViewrota2 = (Switch) MenuItemCompat.getActionView(rota2switch);
+        switchViewrota2.setChecked(true);
+        switchViewrota2.setOnCheckedChangeListener(this);
+
+
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         mainPagerAdapter = new MainPagerAdapter(this.getSupportFragmentManager(),this);
         viewPager.setAdapter(mainPagerAdapter);
         viewPager.addOnPageChangeListener(this);
+
+
 
 
 
@@ -211,13 +236,26 @@ public class MainActivity
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        if (b) {
-            startCircularService();
-            Log.i("UpdateCircularService","Servico inicial");
-        } else {
-            stopCircularService();
-            Log.i("UpdateCircularService","Servico parado");
+    public void onCheckedChanged(CompoundButton sSwitch, boolean b) {
+
+       if (sSwitch.getId()==R.id.nav_switch) {
+            if (b) {
+                startCircularService();
+                Log.i("UpdateCircularService","Servico inicial");
+            } else {
+                stopCircularService();
+                Log.i("UpdateCircularService","Servico parado");
+            }
+        } else if (sSwitch.getId()==R.id.nav_switch_stop) {
+           repositorioParadas.setParadasActive(b);
+           Log.i("UpdateCircularService","switch paradas mudado");
+       } else if (sSwitch.getId()==R.id.nav_switch_rote1) {
+           repositorioRotas.setRota1Ativa(b);
+           Log.i("UpdateCircularService","switch rota1 mudado");
+       } else if (sSwitch.getId()==R.id.nav_switch_rote2) {
+           repositorioRotas.setRota2Ativa(b);
+           Log.i("UpdateCircularService","switch rota mudado");
+       }
         }
-    }
+
 }

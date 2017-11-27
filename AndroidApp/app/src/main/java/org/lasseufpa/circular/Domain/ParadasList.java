@@ -7,71 +7,88 @@ package org.lasseufpa.circular.Domain;
 public abstract class ParadasList {
 
 
-    public static final int N_STOP_POINTS = 28;
+   // public static final int N_STOP_POINTS = 28;
+
     public static final double[][] POINTS = {
 
-        {  -1.47281, -48.45858}, //0- Transporte
-        { -1.475309,  -48.458384}, //1- Segurança
-        { -1.475053,  -48.458483}, //2- RU
-        { -1.472965,  -48.451668}, //3- Portao 3
-        { -1.476600,  -48.454826}, //4- Vadiao
-        { -1.474466,  -48.455782}, //5- ICEN
-        { -1.473141,  -48.455911}, //6- Ginasio
-        { -1.475790,  -48.455654}, //7- Reitoria e Biblioteca
-        { -1.476433,  -48.454813}, //8- Reitoria e RU
-        { -1.475053,  -48.458483}, //9- RU e instituto de Geociências
-        { -1.473459,  -48.458701}, //10-
-        { -1.472336,  -48.457703}, //11
-        { -1.474894,  -48.454301}, //12- PGITEC
-        { -1.475063,  -48.454121}, //13- PGITEC
-        { -1.477671,  -48.456557}, //14-
-        { -1.477092,  -48.458086}, //15-
-        { -1.473297,  -48.453620}, //16- Dona GINA
-        { -1.472667,  -48.448853}, //17
-        { -1.471116,  -48.448037}, //18- Odontologia e Laboratorio de Analises Clinicas
-        { -1.470950,  -48.447908}, //19- Odontologia e Laboratorio de Analises Clinicas
-        { -1.470126,  -48.446759}, //20- Nutricao e Betina
-        { -1.467505,  -48.447569}, //21- Portao 4
-        { -1.467192,  -48.446933}, //22- Portao 4
-        { -1.468420,  -48.448159}, //23- Biomedicina
-        { -1.468937,  -48.448218}, //24-
-        { -1.463631,  -48.444562}, //25- PCT
-        { -1.463215,  -48.444622}, //26- PCT
-        { -1.461523,  -48.442213}  //27- Instituto
+        { -1.47309 ,-48.45862,2},  //0- Transporte
+        { -1.47552, -48.45836,9}, //1- Segurança
+        { -1.47719,   -48.4581,21}, //2- RU
+        { -1.47779,   -48.45676,35}, //3- MIRANTE
+        { -1.47654,  -48.45487,44}, //4- VADIAO
+        { -1.4749,  -48.45426,51}, //5- INCUBADORA
+        {-1.47386,  -48.45463,55}, //6- ARTE
+        { -1.47289,  -48.45158,80}, //7- TERMINAL
+        { -1.47157,-48.44981,96}, //8- JURIDICO (NAEA)
+        { -1.47293,   -48.44877,105}, //9- ICSA/ICJ
+        { -1.47148,  -48.448,115}, //10- ODONTOLOGIA
+        {  -1.47008,-48.44669,127}, //11 - NUTRIÇÃO
+        { -1.46972,  -48.44655}, //12- BETTINA
+        { -1.46846,-48.44822,184}, //13- GENOMA
+        {-1.46436,-48.44475,232}, //14- INOVACAO
+        {-1.46159,-48.44209,291}, //15- INPE
+
+            //VOLTA
+
+        { -1.46436,-48.44475,350}, //16- INOVACAO
+        { -1.46846,-48.44822,398}, //17 - GENOMA
+     //   { -1.471116,  -48.448037,0}, //18- BETTINA
+    //    { -1.470950,  -48.447908,0}, //19- NUTRICAO
+        {  -1.47148,-48.448,407}, //20- ODONTOLOGIA
+     //   { -1.467505,  -48.447569,0}, //21- ICSA/ICJ
+     //   { -1.467192,  -48.446933,0}, //22- JURIDICO/NAIE
+    //    { -1.468420,  -48.448159,0}, //23- TERMINAL
+    //    { -1.468937,  -48.448218,0}, //24- ARTE
+    //    { -1.463631,  -48.444562,0}, //25- INCUBADORA
+     //   { -1.463215,  -48.444622,0}, //26- VADIAO
+            { -1.47622,-48.45562,484}, //27- REITORIA
+            { -1.4744,-48.45583,488}, //28 - ICEN
+           { -1.47297,-48.45598,496}, //29 - GINASIO
+            {-1.47243,-48.45728,499} //30 - CAPACIT
+
+
 
 
     };
 
     public static final String[][] NAME_DESCRIPTION = {
 
-    {"#1-Transporte"          , "Departamento de transporte da UFPA"                },        //0
-    {"#2-Segurança"    , "Segurança Universidade Federal do Pará" },        //1
-    {"#3-Portão 3 (Lado Portaria)"      , "Portão 3 Da UFPA, Terminal Rodoviário"   },        //2
-    {"#4-Portão 3 (Lado Estacionamento)", "Portão 3 Da UFPA, ARodoviário"           },        //3
-    {"#5-Vadião", "Espaço de Recreação, Bancos, Lojas e Serviços"                   },        //4
-    {"#6-ICEN", "Istituto de Ciências Exatas e Naturais"                            },        //5
-    {"#7-Ginásio", "Ginásio de Esportes da UFPA"                                    },        //6
-    {"#8-Reitoria e Biblioteca Central", ""                                         },        //7
-    {"#9-Reitoria", "Reitoria da Universidade Federal do Pará"                      },        //8
-    {"#10-Instituto de Geociências", ""                                             },        //9
-    {"#11-Parada Circular", ""                                                      },        //10
-    {"#12-CAPACIT", "Coordenadoria de Capacitação e Desenvolvimento"                },        //11
-    {"#13-Bosque", "Espaço verde do ITEC"                                           },        //12
-    {"#14-PGITEC/NEWTON", "Bloco de Pós Graduação do ITEC"                          },        //13
-    {"#15-Mirante do Rio", "Novo Bloco de aulas do Campus básico"                   },        //14
-    {"#16-RU Básico", "Restaurante universitário do campus básico"                  },        //15
-    {"#17-Dona Gina", ""                                                            },        //16
-    {"#18-ICSA", "Instituto de Ciências Sociais Aplicadas"                          },        //17
-    {"#19-Odontologia e Laboratorio de Analises Clinicas", ""                       },        //18
-    {"#20-Odontologia e Laboratorio de Analises Clinicas", ""                       },        //19
-    {"#21-Nutrição e Hospital Betina Ferro", ""                                     },        //20
-    {"#22-Portão 4", "Portão 4 da UFPA"                                             },        //21
-    {"#23-CEAMAZON", "Centro de Exc. em Eficiência energética da Amazônia "         },        //22
-    {"#24-Biomedicina", ""                                                          },        //23
-    {"#25-Parada Circular", ""                                                      },        //24
-    {"#26-PCT guamá", "Parque de ciência e Tecnologia"                              },        //25
-    {"#27-PCT guamá", "Parque de Ciência e Tecnologia"                              },        //26
-    {"#28-Parada circular", ""                                                      }         //27
+            //IDA
+    {"1-Transporte"          , "Departamento de transporte da UFPA"                 },        //0
+    {"2-Segurança"    , "Segurança Universidade Federal do Pará"                    },        //1
+    {"3-R.U."      , "Restaurante Universitário"                                    },        //2
+    {"4-Mirante", "Bloco de Aulas Mirante do Rio"                                   },        //3
+    {"5-Vadião", "Espaço de Recreação, Bancos, Lojas e Serviços"                    },        //4
+    {"6-Incubadora", "Universitec, PPGITEC, Newton"                                 },        //5
+    {"7-Arte", "Instituto de Ciências da arte / Espaço verde do ITEC"               },        //6
+    {"8-Terminal", "Terminal Rodoviário, Portão 3 da UFPA"                          },        //7
+    {"9-Juridico (NAEA)", "ICJ, NAEA"                                               },        //8
+    {"10-ICSA, ICJ", "Instituto de ciências sociais aplicadas"                      },        //9
+    {"11-Odontologia", "Faculdade de Odontologia"                                   },        //10
+    {"12-Nutrição", "Enfermagem"                                                    },        //11
+    {"13-Bettina", "Hospital bettina ferro de souza"                                },        //12
+    {"14-Genoma", "Bloco de Pós Graduação do ITEC"                                  },        //13
+    {"15-Espaço Inovação", "Parque de Ciência e Tecnologia da UFPA"                 },        //14
+     {"16-INPE", "Instituto de Pesquisas Espaciais"                                 },        //15
+
+
+            //VOLTA
+
+    {"17-Espaço Inovação", "Parque de Ciência e Tecnologia da UFPA"                                                             },        //16
+    {"18-Genoma", "Bloco de Pós Graduação do ITEC"                      },        //17
+ //   {"#19-Bettina", "Hospital bettina ferro de souza"                          },        //18
+ //   {"#20-Nutrição", "Enfermagem"                       },        //19
+    {"21-Odontologia", "Faculdade de Odontologia"                                  },        //20
+ //   {"22-Portão 4", "Portão 4 da UFPA"                                             },        //21
+ //   {"23-CEAMAZON", "Centro de Exc. em Eficiência energética da Amazônia "         },        //22
+ //   {"24-Biomedicina", ""                                                          },        //23
+ //   {"25-Parada Circular", ""                                                      },        //24
+ //   {"26-PCT guamá", "Parque de ciência e Tecnologia"                              },        //25
+ //   {"27-PCT guamá", "Parque de Ciência e Tecnologia"                              },        //26
+      {"28-Reitoria", "Reitoria da Universidade Federal do Pará"                     },         //27
+            {"29-ICEN", "Instituto de ciências Exatas e Naturais"                    },         //28
+            {"30-Ginásio", "Ginásio de Esportes da Ufpa"                             },         //29
+            {"31-CAPACIT", "Centro de capacitação e desenvolvimento"                 }         //30
 
     };
 

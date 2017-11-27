@@ -43,7 +43,7 @@ public class CircularListRecyclerViewAdapter extends RecyclerView.Adapter<Circul
         holder.mContentView.setText(holder.mItem.getPosition().toString());
 
         if (holder.mItem.isObsolet()) {
-            holder.mImageView.setImageResource(R.drawable.circg);
+            holder.mImageView.setImageResource(R.drawable.circpind);
         }
 
 
