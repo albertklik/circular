@@ -49,14 +49,14 @@
             android:id="@+id/nav_stops"
             android:icon="@drawable/ic_flagd"
             android:title="Paradas" />
-        <item
+        <!--<item
             android:id="@+id/nav_config"
             android:icon="@drawable/ic_settings"
             android:title="Configurações" />
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_feedback"
-            android:title="Feedback" />
+            android:title="Feedback" />-->
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info"

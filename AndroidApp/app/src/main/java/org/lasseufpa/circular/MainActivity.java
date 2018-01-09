@@ -52,6 +52,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Circular UFPA");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,12 +174,8 @@ public class MainActivity
             viewPager.setCurrentItem(1);
         } else if (id == R.id.nav_stops) {
             viewPager.setCurrentItem(2);
-        } else if (id == R.id.nav_config) {
-            viewPager.setCurrentItem(3);
-        } else if (id == R.id.nav_feedback) {
-            viewPager.setCurrentItem(4);
         } else if (id == R.id.nav_about) {
-
+            startActivity(new Intent(this,SobreActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -190,12 +187,8 @@ public class MainActivity
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        toolbar.setTitle(titles[position]);
-        if (position==1) {
-            toolbar.setElevation(0);
-        } else {
-            toolbar.setElevation(5);
-        }
+        toolbar.setSubtitle(titles[position]);
+
     }
 
     @Override
@@ -210,12 +203,7 @@ public class MainActivity
             case 2:
                 nav.setCheckedItem(R.id.nav_stops);
                 break;
-            case 3:
-                nav.setCheckedItem(R.id.nav_config);
-                break;
-            case 4:
-                nav.setCheckedItem(R.id.nav_feedback);
-                break;
+
         }
 
     }

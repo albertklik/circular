@@ -493,7 +493,9 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        if (map!=null) {
             map.onSaveInstanceState(outState);
+        }
         outState.putBoolean("saved",true);
     }
 
