@@ -15,8 +15,8 @@ android {
         applicationId "org.lasseufpa.Circular"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 2001
-        versionName "2.0"
+        versionCode 2002
+        versionName "2.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
