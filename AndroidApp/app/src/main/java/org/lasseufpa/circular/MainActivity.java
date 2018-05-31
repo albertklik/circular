@@ -110,6 +110,10 @@ public class MainActivity
 
     }
 
+    public void instantiateObjects() {
+
+    }
+
     public void startCircularService () {
         Intent in = new Intent("CIRCULAR_LOCATION");
         in.setPackage(this.getPackageName());
@@ -226,7 +230,7 @@ public class MainActivity
     @Override
     public void onCheckedChanged(CompoundButton sSwitch, boolean b) {
 
-       if (sSwitch.getId()==R.id.nav_switch) {
+        if (sSwitch.getId()==R.id.nav_switch) {
             if (b) {
                 startCircularService();
                 Log.i("UpdateCircularService","Servico inicial");
@@ -235,15 +239,15 @@ public class MainActivity
                 Log.i("UpdateCircularService","Servico parado");
             }
         } else if (sSwitch.getId()==R.id.nav_switch_stop) {
-           repositorioParadas.setParadasActive(b);
-           Log.i("UpdateCircularService","switch paradas mudado");
-       } else if (sSwitch.getId()==R.id.nav_switch_rote1) {
-           repositorioRotas.setRota1Ativa(b);
-           Log.i("UpdateCircularService","switch rota1 mudado");
-       } else if (sSwitch.getId()==R.id.nav_switch_rote2) {
-           repositorioRotas.setRota2Ativa(b);
-           Log.i("UpdateCircularService","switch rota mudado");
-       }
+            repositorioParadas.setParadasActive(b);
+            Log.i("UpdateCircularService","switch paradas mudado");
+        } else if (sSwitch.getId()==R.id.nav_switch_rote1) {
+            repositorioRotas.setRota1Ativa(b);
+            Log.i("UpdateCircularService","switch rota1 mudado");
+        } else if (sSwitch.getId()==R.id.nav_switch_rote2) {
+            repositorioRotas.setRota2Ativa(b);
+            Log.i("UpdateCircularService","switch rota2 mudado");
         }
+    }
 
 }

@@ -12,7 +12,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 /**
  *
- *    ALPHAMAGE APPS TECHNOLOGY
+ *    ALPHAMAGE TECHNOLOGY
  *    Desenvolvimento de aplicações com qualidade
  *
  */

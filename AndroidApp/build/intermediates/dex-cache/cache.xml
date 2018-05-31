@@ -3,39 +3,39 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6ebd0f04d9b2dfe41562cbff038b93ae06574ccd\classes.dex" />
+        sha1="6bc9a38176ec4dedc087d085c762a60d23e6d9ca">
+        <dex dex="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6a060156f89cdc3a334918c770abead79aa7ebe8\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\alberto\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.android.service\1.0.3-SNAPSHOT\306f4b0f9020bd1f5e77e84dc1ee44ca5864194a\org.eclipse.paho.android.service-1.0.3-SNAPSHOT.jar"
+        jar="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="306f4b0f9020bd1f5e77e84dc1ee44ca5864194a">
-        <dex dex="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\org.eclipse.paho.android.service-1.0.3-SNAPSHOT_d93b94e46da6630e94a4b7dfb27823c498aaf446\classes.dex" />
+        sha1="12920f9016b8b05acbc2af7cdc13cef6946fe7d3">
+        <dex dex="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_1df29d34c0b44d04cd0c6a27950417b990209012\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\alberto\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.android.service\1.1.1\6c3c5ef8f5f205def0f725b6c0f57217c8fb9ff5\org.eclipse.paho.android.service-1.1.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="164f5f1ca3faf6d831084b1378582b7485833d78">
-        <dex dex="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_426870084d714dfad5bd4e0e6dc5b59795d2d758\classes.dex" />
+        sha1="6c3c5ef8f5f205def0f725b6c0f57217c8fb9ff5">
+        <dex dex="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\org.eclipse.paho.android.service-1.1.1_dc96ab3c061f0e1632bf94213cbfdf7994e4c21a\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\alberto\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.client.mqttv3\1.0.3-SNAPSHOT\364bbb31f264b2de958c5a0437de478af18ae7\org.eclipse.paho.client.mqttv3-1.0.3-SNAPSHOT.jar"
+        jar="C:\Users\alberto\.gradle\caches\modules-2\files-2.1\org.eclipse.paho\org.eclipse.paho.client.mqttv3\1.2.0\d9496013da5936bf88f797290449d297d371062b\org.eclipse.paho.client.mqttv3-1.2.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="00364bbb31f264b2de958c5a0437de478af18ae7">
-        <dex dex="C:\Users\alberto\Documents\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\org.eclipse.paho.client.mqttv3-1.0.3-SNAPSHOT_db7dbcc91e4d6c8b217a621e808cf2e1fde29c0f\classes.dex" />
+        sha1="d9496013da5936bf88f797290449d297d371062b">
+        <dex dex="C:\Users\alberto\Documents\ALPHAMAGE\circular\AndroidApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\org.eclipse.paho.client.mqttv3-1.2.0_6ea29cf716becb77545b3439e78a90329c0d2ff6\classes.dex" />
     </item>
 
 </items>

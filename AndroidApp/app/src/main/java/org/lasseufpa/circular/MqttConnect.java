@@ -20,7 +20,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.lasseufpa.circular.Domain.Circular;
 
-
 public class MqttConnect  {
 
 
@@ -40,6 +39,7 @@ public class MqttConnect  {
         this.contexto = contexto;
         this.handler = hand;
     }
+
 
     boolean isconnected() {
         boolean retorno;
