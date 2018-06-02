@@ -440,13 +440,15 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
                 MarkerOptions markerOption;
                 BitmapDescriptor icone = BitmapDescriptorFactory.fromBitmap(resizeMapIcons("stoppin", 70, 70));
                 for (Parada p : paradas) {
-                    markerOption = (new MarkerOptions()
-                            .position(p.getLocation())
-                            .title(p.getTitle())
-                            .icon(icone))
-                            .snippet(p.getDescription());
+                    if (p.isMostrarMapa()) {
+                        markerOption = (new MarkerOptions()
+                                .position(p.getLocation())
+                                .title(p.getTitle())
+                                .icon(icone))
+                                .snippet(p.getDescription());
 
-                    publishProgress(markerOption);
+                        publishProgress(markerOption);
+                    }
                 }
             } else {
                 cleanParadaMarkers();

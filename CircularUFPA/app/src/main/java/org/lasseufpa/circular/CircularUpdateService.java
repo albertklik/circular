@@ -61,12 +61,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
             mqttConect = MQTTconect.getInstance();
         }
 
-
         mqttConect.setStatus(MQTTconect.MQTTConectStatus.STATUS_INITALIZING);
-
-
-
-
 
     }
 

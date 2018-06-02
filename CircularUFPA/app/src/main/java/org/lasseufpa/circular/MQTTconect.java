@@ -178,25 +178,25 @@ public class MQTTconect {
                 retorno = "Iniciando o serviço";
                 break;
             case MQTTConectStatus.STATUS_CONNECTING:
-                retorno = "conectando ao servidor";
+                retorno = "Conectando ao servidor";
                 break;
             case MQTTConectStatus.STATUS_CONNECTED:
-                retorno = "conectado ao servidor";
+                retorno = "Conectado ao servidor";
                 break;
             case MQTTConectStatus.STATUS_SUBSCRIBING:
-                retorno = "estabelecendo comunicação";
+                retorno = "Estabelecendo comunicação";
                 break;
             case MQTTConectStatus.STATUS_SUBSCRIBED:
-                retorno = "comunicação estabelecida";
+                retorno = "Comunicação estabelecida";
                 break;
             case MQTTConectStatus.STATUS_DISCONNECTED:
-                retorno = "conexão com o servidor perdida";
+                retorno = "Conexão com o servidor perdida";
                 break;
             case MQTTConectStatus.CONNECTION_FAILED:
-                retorno = "falha na conexão com o servidor";
+                retorno = "Falha na conexão com o servidor";
                 break;
             case MQTTConectStatus.DEVICE_OFFLINE:
-                retorno = "Dospositivo sem conexão com a internet";
+                retorno = "Dispositivo sem conexão com a internet";
                 break;
         }
         return  retorno;

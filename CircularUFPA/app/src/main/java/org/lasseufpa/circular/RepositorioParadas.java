@@ -101,18 +101,24 @@ public class RepositorioParadas {
 
         @Override
         protected Void doInBackground(Void... voids) {
+         try {
+             Parada currentP;
+             for (int i = 0; i < ParadasList.POINTS.length; i++) {
+                 currentP = new Parada(i);
+                 currentP.setTitle(ParadasList.NAME_DESCRIPTION[i][0]);
+                 currentP.setDescription(ParadasList.NAME_DESCRIPTION[i][1]);
+                 currentP.setLocation(new LatLng(ParadasList.POINTS[i][ParadasList.INDEX_POINTS_LATITUDE], ParadasList.POINTS[i][ParadasList.INDEX_POINTS_LONGITUDE]));
+                 currentP.setMostrarMapa(((int) ParadasList.POINTS[i][ParadasList.INDEX_POINTS_INSERIR_MAPA]) == 1);
+                 currentP.setSentido_rota((int) ParadasList.POINTS[i][ParadasList.INDEX_SENTIDO_ROTA]);
+                 currentP.setTipo((int) ParadasList.POINTS[i][ParadasList.INDEX_POINTS_TIPO]);
 
-            Parada currentP;
-            for (int i = 0;i<ParadasList.POINTS.length;i++) {
-                currentP = new Parada(i);
-                currentP.setTitle(ParadasList.NAME_DESCRIPTION[i][0]);
-                currentP.setDescription(ParadasList.NAME_DESCRIPTION[i][1]);
-                currentP.setLocation(new LatLng(ParadasList.POINTS[i][0],ParadasList.POINTS[i][1]));
-
-                currentP.setCircularHere(false);
-                paradas.add(i,currentP);
-                Log.i("log","adicionado" + currentP.getDescription());
-            }
+                 currentP.setCircularHere(false);
+                 paradas.add(i, currentP);
+                 Log.i("log", "adicionado" + currentP.getDescription());
+             }
+         }catch (Exception e ) {
+             e.printStackTrace();
+         }
             return null;
         }
 

@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
-    android:name="org.lasseufpa.circular.CircularListFragment"
+    android:background="@color/backgroundContent"
+    android:name="org.lasseufpa.circular.paradaListFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
 
     app:layoutManager="LinearLayoutManager"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="org.lasseufpa.circular.CircularListFragment"
+    tools:context="org.lasseufpa.circular.ParadaListFragment"
     tools:listitem="@layout/fragment_circularlist" />

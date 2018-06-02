@@ -14,6 +14,33 @@ public class Parada {
     private String description;
     private final int nParada;
     private boolean IsCircularHere;
+    private boolean mostrarMapa;
+    private int sentido_rota;
+    private int tipo;
+
+    public boolean isMostrarMapa() {
+        return mostrarMapa;
+    }
+
+    public void setMostrarMapa(boolean mostrarMapa) {
+        this.mostrarMapa = mostrarMapa;
+    }
+
+    public int getSentido_rota() {
+        return sentido_rota;
+    }
+
+    public void setSentido_rota(int sentido_rota) {
+        this.sentido_rota = sentido_rota;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
 
     public LatLng getLocation() { return location;    }
 

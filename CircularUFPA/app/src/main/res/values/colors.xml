@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#e57200</color>
     <color name="colorAccent">#ff0027</color>
     <color name="splashBack">#ffffff</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="backgroundContent">#efefef</color>
+    <color name="rotaVolta">#2057ef</color>
 </resources>

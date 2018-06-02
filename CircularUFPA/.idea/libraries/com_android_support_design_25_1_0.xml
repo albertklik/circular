@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.android.support:design-25.1.0">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/bf7c888e679908507e7b2c5c69dc6153001c08f8/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/bf7c888e679908507e7b2c5c69dc6153001c08f8/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-25.1.0.aar/c3a9708b17b3fcda53e29eba0cc64504/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-25.1.0.aar/c3a9708b17b3fcda53e29eba0cc64504/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/design/25.1.0/design-25.1.0-javadoc.jar!/" />
