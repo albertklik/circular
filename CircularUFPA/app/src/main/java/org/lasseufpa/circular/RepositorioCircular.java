@@ -36,7 +36,7 @@ public class RepositorioCircular {
     //salva um circular
     public void saveCircular(Circular circ) {
 
-        Log.i("depura"," circular " + circ.getNome() +  "adicionado");
+        Log.i("depura","objeto " + circ.getNome() +  " adicionado");
 
 
         lastUpdate = Calendar.getInstance(); //registra o tempo de atualização

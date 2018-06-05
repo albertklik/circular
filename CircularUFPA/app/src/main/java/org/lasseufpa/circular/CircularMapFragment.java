@@ -109,7 +109,8 @@ public class CircularMapFragment extends Fragment implements OnMapReadyCallback,
         repositorioCirculares.setRepositorioCircularChangeListener(this);
         repositorioParadas.setOnRepositorioParadasChangeListener(this);
         repositorioRotas.setOnRepositorioParadasChangeListener(this);
-
+        map.onStart();
+        updateCircularPosition();
     }
 
     @Override

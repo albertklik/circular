@@ -209,6 +209,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
         if (mNotificationManager!=null) {
             mNotificationManager.cancel(1);
         }
+        mqttConect.removeMQTTActionListener(this);
         disconnectToMqttServer();
         super.onDestroy();
     }
@@ -233,9 +234,14 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
 
             switch (info) {
                 case "loc" :
-                    Circular c = new CircularBuilderGSM().CircularBuild(message,nomeCircular);
-                    repositorio.saveCircular(c);
-                    printMQTTLog("localização do circular "+nomeCircular+" recebida");
+                    try {
+                        Circular c = new CircularBuilderGSM().CircularBuild(message, nomeCircular);
+                        repositorio.saveCircular(c);
+                        printMQTTLog("localização do circular "+nomeCircular+" recebida");
+                    } catch (IllegalArgumentException e) {
+                        printMQTTLog("Mensagem não reconhecida");
+                    }
+
                     break;
                 default:
                     printMQTTLog("Mensagem não reconhecida");
