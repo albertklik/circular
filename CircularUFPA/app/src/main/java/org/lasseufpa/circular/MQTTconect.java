@@ -51,6 +51,11 @@ public class MQTTconect {
         }
     }
 
+    public static void finishInstance() {
+        MQTTCONNECT_GLOBAL_INSTANCE = null;
+    }
+
+
 
     public MQTTconect(Context context) {
 
@@ -126,6 +131,11 @@ public class MQTTconect {
 
     public void disconnect(IMqttActionListener listener) throws MqttException {
          mqttAndroidClient.disconnect(0,null,listener);
+    }
+
+    public void unresisterResources() {
+        mqttAndroidClient.unregisterResources();
+        mqttAndroidClient.close();
     }
 
 

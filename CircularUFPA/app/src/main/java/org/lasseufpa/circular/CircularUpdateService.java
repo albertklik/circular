@@ -1,6 +1,5 @@
 package org.lasseufpa.circular;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -15,7 +14,6 @@ import android.util.Log;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.lasseufpa.circular.Domain.Circular;
 import org.lasseufpa.circular.Utils.NetworkUtils;
 
@@ -59,6 +57,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
             mqttConect.addMQTTActionListener(this);
         } else {
             mqttConect = MQTTconect.getInstance();
+
         }
 
         mqttConect.setStatus(MQTTconect.MQTTConectStatus.STATUS_INITALIZING);
@@ -97,6 +96,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
 
     public void disconnectToMqttServer() {
         try {
+
             mqttConect.disconnect(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
@@ -109,6 +109,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
                     printMQTTLog("Error on disconnect from server mqtt");
                 }
             });
+            mqttConect.unresisterResources();
         } catch (MqttException e) {
             e.printStackTrace();
             printMQTTLog("Error on disconnect from server mqtt");
@@ -211,6 +212,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
         }
         mqttConect.removeMQTTActionListener(this);
         disconnectToMqttServer();
+        MQTTconect.finishInstance();
         super.onDestroy();
     }
 
@@ -308,10 +310,10 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
     @Override
     public void onConnectComplete(boolean Reconnect, String ServerUri) {
         if (Reconnect) {
-            printMQTTLog("reconected to mqtt server: " + ServerUri);
+            printMQTTLog(" reconected to mqtt server: " + ServerUri);
 
         } else {
-            printMQTTLog("connected to mqtt server: " + ServerUri);
+            printMQTTLog(" connected to mqtt server: " + ServerUri);
         }
 
         mqttConect.setStatus(MQTTconect.MQTTConectStatus.STATUS_CONNECTED);
@@ -327,7 +329,7 @@ public class CircularUpdateService extends Service implements Runnable, MQTTcone
 
     @Override
     public void onMessageArrived(String topic, String message) throws Exception {
-        printMQTTLog("Message arrived [ "+topic+" ] : " + message);
+        printMQTTLog("Message arrived [ " + topic + " ] : " + message);
         new OnMessageArrived().execute(topic,message);
     }
 
